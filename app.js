@@ -61,7 +61,7 @@ client.on("message", async message => {
 
   var NOTIFY_CHANNEL;
 client.on('ready', () => {
-  NOTIFY_CHANNEL = bot.channels.find('317717108169375744'); // Channel to send notification
+  NOTIFY_CHANNEL = bot.channels.find('317717108169375744','412032015135801354'); // Channel to send notification
 });
 
 const TARGET_MINUTE = 0; // Minute of the hour when the chest will refresh, 30 means 1:30, 2:30, etc.
@@ -71,6 +71,7 @@ const NOTIFY_MINUTE = (TARGET_MINUTE < OFFSET ? 30 : 0) + TARGET_MINUTE - OFFSET
 setInterval(function() {
     var d = new Date();
     if(d.getMinutes() !== NOTIFY_MINUTE) return; // Return if current minute is not the notify minute
+    NOTIFY_CHANNEL.sendMessage('**message not set**');
 }, 30 * 1000); // Check every minute
 
 });
